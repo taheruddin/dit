@@ -1,0 +1,40 @@
+<div class="dit-wrapper">
+    <div>
+        <table>
+            <caption ng-show="caption">{{caption}}</caption>
+            <tr ng-repeat="(ri, row) in matrix">
+                <td ng-repeat="cell in row track by $index">
+                    <input type="text" ng-model="cell" size="9" ng-blur="valueChanged(ri, $index, cell)">
+                </td>
+            </tr>
+        </table>
+        <div>
+            <button class="add-row" ng-click="addRow()">Add Row</button>
+        </div>
+    </div>
+    <div>
+        <button class="add-col" ng-click="addCol()">Add Column</button>
+    </div>
+</div>
+<style>
+    .dit-wrapper {
+        padding-left: 110px;
+        clear: both;
+    }
+    .dit-wrapper > div:first-child {
+        margin-left: -110px;
+        float: left;
+    }
+    .dit-wrapper > div:last-child {
+        width: 110px;
+        float: left;
+        margin-top: 35px;
+    }
+    .dit-wrapper .add-row {
+        width: 100%;
+    }
+    .dit-wrapper .add-col {
+        width: 110px;
+        height: 50px;
+    }
+</style>
