@@ -22,7 +22,7 @@ describe('Dynamic Input Table', function() {
         scope.$digest();
         directiveScope = element.isolateScope();
         //console.log($templateCache.get('components/dynamic-input-table/dynamic-input-table.html'));
-        console.log(element);
+        console.log(template);
         //console.log(directiveScope);
     }));
 

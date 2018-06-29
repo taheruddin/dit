@@ -2,39 +2,57 @@
     <div>
         <table>
             <caption ng-show="caption">{{caption}}</caption>
+            <tr>
+                <td></td>
+                <td ng-repeat="cell in matrix[0] track by $index">
+                    <button ng-disabled="matrix[0].length <= 1" class="remove" ng-click="removeCol($index)">Remove ↓</button>
+                </td>
+                <td ng-if="ri==0"><button class="add-col" ng-click="addCol()">Add Column</button></td>
+                <td><button class="add-col" ng-click="addCol()">Add Column</button></td>
+            </tr>
             <tr ng-repeat="(ri, row) in matrix">
+                <td>
+                    <button ng-disabled="matrix.length <= 1" class="remove" ng-click="removeRow(ri)">Remove →</button>
+                </td>
                 <td ng-repeat="cell in row track by $index">
                     <input type="text" ng-model="cell" size="9" ng-blur="valueChanged(ri, $index, cell)">
                 </td>
             </tr>
+            <tr>
+                <td></td>
+                <td colspan="{{matrix[0].length}}"><button class="add-row" ng-click="addRow()">Add Row</button></td>
+            </tr>
         </table>
-        <div>
-            <button class="add-row" ng-click="addRow()">Add Row</button>
-        </div>
-    </div>
-    <div>
-        <button class="add-col" ng-click="addCol()">Add Column</button>
     </div>
 </div>
 <style>
-    .dit-wrapper {
-        padding-left: 110px;
-        clear: both;
+    .dit-wrapper input {
+        border: none;
     }
-    .dit-wrapper > div:first-child {
-        margin-left: -110px;
-        float: left;
+    .dit-wrapper button {
+        display: block;
+        border: none;
+        border-radius: 6px;
+        margin-left: 3px;
+        margin-right: 3px;
     }
-    .dit-wrapper > div:last-child {
-        width: 110px;
-        float: left;
-        margin-top: 35px;
+    .dit-wrapper td {
+        border: 1px solid #cccccc;
+        padding: 1px;
     }
     .dit-wrapper .add-row {
-        width: 100%;
+        width: 98%;
+        color: dodgerblue;
     }
     .dit-wrapper .add-col {
         width: 110px;
-        height: 50px;
+        color: dodgerblue;
+    }
+    .dit-wrapper .remove {
+        color: crimson;
+    }
+
+    .dit-wrapper .remove:disabled {
+        color: gray;
     }
 </style>
